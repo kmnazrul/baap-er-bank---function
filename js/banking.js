@@ -32,12 +32,12 @@ document
   .getElementById('deposit-button')
   .addEventListener('click', function () {
     const depositAmount = getInputValue('deposit-input');
-
-    // get and update deposit total
-    updateTotalField('deposit-total', depositAmount);
-
-    // update balance
-    updateBalance(depositAmount, true);
+    if (depositAmount > 0) {
+      updateTotalField('deposit-total', depositAmount);
+      updateBalance(depositAmount, true);
+    } else {
+      alert('Please input a positive Number');
+    }
   });
 
 //   handle withdraw button
@@ -45,9 +45,10 @@ document
   .getElementById('withdraw-button')
   .addEventListener('click', function () {
     const withdrawAmount = getInputValue('withdraw-input');
-    // get and update withdraw total
-    updateTotalField('withdraw-total', withdrawAmount);
-
-    // Update Balance
-    updateBalance(withdrawAmount, false);
+    if (withdrawAmount > 0) {
+      updateTotalField('withdraw-total', withdrawAmount);
+      updateBalance(withdrawAmount, false);
+    } else {
+      alert('Please input a positive Number');
+    }
   });
